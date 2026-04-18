@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <title>Finance App</title>
+</head>
+
+<div class="app-container">
+
+  <body>
+
+    <h1>Account Overview</h1>
+
+    <div class="dashboard">
+
+      <div class="account-card">
+        <h2>SEK</h2>
+        <div id="sekBalance" class="balance">...</div>
+        <button id="openSek">Open</button>
+      </div>
+
+      <div class="account-card">
+        <h2>EUR</h2>
+        <div id="eurBalance" class="balance">...</div>
+        <button id="openEur">Open</button>
+      </div>
+
+      <div class="account-card">
+        <h2>Saving</h2>
+        <div id="savingBalance" class="balance">...</div>
+        <button id="openSaving">Open</button>
+      </div>
+
+      <div class="account-card">
+        <h2>Revolut</h2>
+        <div id="revolutBalance" class="balance">...</div>
+        <button id="openRevolut">Open</button>
+      </div>
+
+    </div>
+
+
+    <div class="export-buttons">
+
+      <button onclick="exportFiltered('transactions_sek', 'sek')">Export SEK</button>
+      <button onclick="exportFiltered('transactions_eur', 'eur')">Export EUR</button>
+      <button onclick="exportFiltered('transactions_saving', 'saving')">Export Saving</button>
+      <button onclick="exportFiltered('transactions_revolut', 'revolut')">Export Revolut</button>
+
+    </div>
+
+    <div class="filters-dashboard">
+
+      <input id="fromDate" type="date">
+      <input id="toDate" type="date">
+
+      <select id="typeFilter">
+        <option value="">All</option>
+        <option value="in">In</option>
+        <option value="out">Out</option>
+      </select>
+
+      <input id="groupFilter" type="text">
+
+    </div>
+
+
+    <script type="module" src="app.js"></script>
+
+  </body>
+
+</div>
+
+</html>

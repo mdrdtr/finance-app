@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <link rel="stylesheet" href="style.css">
+  <title>SEK Account</title>
+</head>
+
+<body>
+
+  <div class="app-container">
+
+    <button id="backBtn">← Back</button>
+
+    <script type="module">
+      document.getElementById('backBtn').addEventListener('click', () => {
+        window.location.href = 'index.html'
+      })
+    </script>
+
+    <h1>SEK Account</h1>
+
+    <div class="balance-card">
+      <div id="balance" class="balance-value">...</div>
+    </div>
+
+    <div class="filter-bar">
+
+      <strong id="sortDate">Date ⇅</strong>
+
+      <input type="date" id="fromDate" />
+      <input type="date" id="toDate" />
+
+      <select id="typeFilter">
+        <option value="">All</option>
+        <option value="in">In</option>
+        <option value="out">Out</option>
+      </select>
+
+      <input type="text" id="groupFilter" placeholder="Group filter" />
+
+    </div>
+
+    <div class="form-card">
+
+      <form id="form">
+
+        <input type="date" id="date" />
+
+        <input type="number" id="in" placeholder="In" />
+        <input type="number" id="out" placeholder="Out" />
+
+        <input type="text" id="counterparty" placeholder="From / To" />
+        <input type="text" id="reason" placeholder="Reason" />
+
+        <input type="number" id="eur" placeholder="EUR (optional)" />
+
+        <input type="text" id="group" placeholder="Group" />
+        <input type="text" id="notes" placeholder="Notes" />
+
+        <button type="submit">Add</button>
+
+      </form>
+
+    </div>
+
+    <hr>
+
+    <div id="list"></div>
+
+    <script type="module" src="sek.js"></script>
+
+  </div>
+
+</body>
+
+</html>
