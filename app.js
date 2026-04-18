@@ -186,6 +186,7 @@ async function backupAll() {
 
   for (const table of tables) {
     const data = await fetchTable(table)
+    const csv = toCSV(data)
     const date = new Date().toISOString().split('T')[0]
     downloadCSV(`${table}_${date}.csv`, csv)
   }
