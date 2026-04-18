@@ -3,8 +3,7 @@ import fs from 'fs'
 
 const supabase = createClient(
   'https://smtnkxhsxerdkrggdxuc.supabase.co',
-  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNtdG5reGhzeGVyZGtyZ2dkeHVjIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc3NjQzNjczMywiZXhwIjoyMDkyMDEyNzMzfQ.yq6feL5PfZedK54gaxEiLcRsZJIZ2jwIR_9WQBkNby0' // ⚠️ NON la public key
-)
+  
 
 async function backup(table) {
   const { data } = await supabase.from(table).select('*')
