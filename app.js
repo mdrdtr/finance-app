@@ -10,6 +10,8 @@ const { data } = await supabase.auth.getUser()
 
 if (!data.user) {
   window.location.href = "login.html"
+} else {
+  document.body.style.display = "block"
 }
 
 // =====================
