@@ -136,3 +136,60 @@ async function exportFiltered(tableName, fileName) {
 
 window.exportTable = exportTable
 window.exportFiltered = exportFiltered
+
+async function fetchTable(table) {
+  const { data, error } = await supabase
+    .from(table)
+    .select('*')
+
+  if (error) {
+    console.error(`Errore su ${table}:`, error)
+    return []
+  }
+
+  return data || []
+}
+
+function toCSV(data) {
+  if (!data.length) return ''
+
+  const headers = Object.keys(data[0]).join(',')
+
+  const rows = data.map(row =>
+    Object.values(row)
+      .map(v => `"${(v ?? '').toString().replaceAll('"', '""')}"`)
+      .join(',')
+  )
+
+  return [headers, ...rows].join('\n')
+}
+
+function downloadCSV(filename, csv) {
+  const blob = new Blob([csv], { type: 'text/csv' })
+  const url = window.URL.createObjectURL(blob)
+
+  const a = document.createElement('a')
+  a.href = url
+  a.download = filename
+  a.click()
+
+  window.URL.revokeObjectURL(url)
+}
+
+async function backupAll() {
+  const tables = [
+    'transactions_sek',
+    'transactions_eur',
+    'transactions_saving',
+    'transactions_revolut'
+  ]
+
+  for (const table of tables) {
+    const data = await fetchTable(table)
+    const date = new Date().toISOString().split('T')[0]
+    downloadCSV(`${table}_${date}.csv`, csv)
+  }
+}
+
+document.getElementById('backupAllBtn')
+  .addEventListener('click', backupAll)
