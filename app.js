@@ -6,6 +6,18 @@ const supabase = createClient(
   'sb_publishable_vMLbSiqKJn5D_NOzFUCmZw_MC5oHqNs'
 )
 
+// =====================
+// LOGOUT
+// =====================
+const logoutBtn = document.getElementById('logoutBtn')
+if (logoutBtn) {
+  logoutBtn.addEventListener('click', async () => {
+    await supabase.auth.signOut()
+    window.location.href = "login.html"
+  })
+}
+
+
 const { data } = await supabase.auth.getUser()
 
 if (!data.user) {
