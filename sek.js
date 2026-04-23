@@ -158,7 +158,7 @@ list.appendChild(div)
   })
 
   document.getElementById('balance').innerText =
-    `Balance: ${balance} SEK`
+    `Balance: ${Math.round(balance * 100) / 100} SEK`
 }
 
 // EVENTS (IMPORTANTE)
